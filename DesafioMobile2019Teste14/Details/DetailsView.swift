@@ -71,9 +71,15 @@ class DetailsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .darkGray
-        
+        verticalContainer.addSubview(titleLabel)
+        verticalContainer.addSubview(genresLabel)
+        verticalContainer.addSubview(yearLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(verticalContainer)
+        scrollView.addSubview(imageView)
+        scrollView.addSubview(castView)
+        scrollView.addSubview(descLabel)
     }
 
 
