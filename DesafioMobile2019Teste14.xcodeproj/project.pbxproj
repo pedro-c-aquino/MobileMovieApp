@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		96951C1928E33C64006DC3FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C1828E33C64006DC3FC /* AppDelegate.swift */; };
 		96951C1B28E33C64006DC3FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C1A28E33C64006DC3FC /* SceneDelegate.swift */; };
-		96951C1D28E33C64006DC3FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C1C28E33C64006DC3FC /* ViewController.swift */; };
-		96951C2028E33C64006DC3FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96951C1E28E33C64006DC3FC /* Main.storyboard */; };
 		96951C2228E33C65006DC3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96951C2128E33C65006DC3FC /* Assets.xcassets */; };
 		96951C2528E33C65006DC3FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96951C2328E33C65006DC3FC /* LaunchScreen.storyboard */; };
+		96951C3028E33EAE006DC3FC /* UpcomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C2F28E33EAE006DC3FC /* UpcomingView.swift */; };
+		96951C3228E33EBC006DC3FC /* UpcomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3128E33EBC006DC3FC /* UpcomingViewModel.swift */; };
+		96951C3428E33ECA006DC3FC /* UpcomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3328E33ECA006DC3FC /* UpcomingModel.swift */; };
+		96951C3628E33EDD006DC3FC /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3528E33EDD006DC3FC /* PopularView.swift */; };
+		96951C3828E33EEE006DC3FC /* PopularViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3728E33EEE006DC3FC /* PopularViewModel.swift */; };
+		96951C3A28E33EFD006DC3FC /* PopularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3928E33EFD006DC3FC /* PopularModel.swift */; };
+		96951C3C28E33F0A006DC3FC /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3B28E33F0A006DC3FC /* DetailsView.swift */; };
+		96951C3E28E33F1E006DC3FC /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3D28E33F1E006DC3FC /* DetailsViewModel.swift */; };
+		96951C4028E33F29006DC3FC /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C3F28E33F29006DC3FC /* DetailsModel.swift */; };
+		96951C4328E33F45006DC3FC /* NetworkManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C4228E33F45006DC3FC /* NetworkManeger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		96951C1528E33C64006DC3FC /* DesafioMobile2019Teste14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioMobile2019Teste14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96951C1828E33C64006DC3FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96951C1A28E33C64006DC3FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		96951C1C28E33C64006DC3FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		96951C1F28E33C64006DC3FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96951C2128E33C65006DC3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96951C2428E33C65006DC3FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96951C2628E33C65006DC3FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96951C2F28E33EAE006DC3FC /* UpcomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingView.swift; sourceTree = "<group>"; };
+		96951C3128E33EBC006DC3FC /* UpcomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewModel.swift; sourceTree = "<group>"; };
+		96951C3328E33ECA006DC3FC /* UpcomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingModel.swift; sourceTree = "<group>"; };
+		96951C3528E33EDD006DC3FC /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		96951C3728E33EEE006DC3FC /* PopularViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModel.swift; sourceTree = "<group>"; };
+		96951C3928E33EFD006DC3FC /* PopularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularModel.swift; sourceTree = "<group>"; };
+		96951C3B28E33F0A006DC3FC /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		96951C3D28E33F1E006DC3FC /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		96951C3F28E33F29006DC3FC /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		96951C4228E33F45006DC3FC /* NetworkManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManeger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,63 @@
 		96951C1728E33C64006DC3FC /* DesafioMobile2019Teste14 */ = {
 			isa = PBXGroup;
 			children = (
-				96951C1828E33C64006DC3FC /* AppDelegate.swift */,
-				96951C1A28E33C64006DC3FC /* SceneDelegate.swift */,
-				96951C1C28E33C64006DC3FC /* ViewController.swift */,
-				96951C1E28E33C64006DC3FC /* Main.storyboard */,
+				96951C4428E33F86006DC3FC /* AppDelegate */,
+				96951C4128E33F2C006DC3FC /* Network */,
+				96951C2E28E33E90006DC3FC /* Details */,
+				96951C2D28E33E86006DC3FC /* Popular */,
+				96951C2C28E33E40006DC3FC /* Upcoming */,
 				96951C2128E33C65006DC3FC /* Assets.xcassets */,
 				96951C2328E33C65006DC3FC /* LaunchScreen.storyboard */,
 				96951C2628E33C65006DC3FC /* Info.plist */,
 			);
 			path = DesafioMobile2019Teste14;
+			sourceTree = "<group>";
+		};
+		96951C2C28E33E40006DC3FC /* Upcoming */ = {
+			isa = PBXGroup;
+			children = (
+				96951C2F28E33EAE006DC3FC /* UpcomingView.swift */,
+				96951C3128E33EBC006DC3FC /* UpcomingViewModel.swift */,
+				96951C3328E33ECA006DC3FC /* UpcomingModel.swift */,
+			);
+			path = Upcoming;
+			sourceTree = "<group>";
+		};
+		96951C2D28E33E86006DC3FC /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				96951C3528E33EDD006DC3FC /* PopularView.swift */,
+				96951C3728E33EEE006DC3FC /* PopularViewModel.swift */,
+				96951C3928E33EFD006DC3FC /* PopularModel.swift */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		96951C2E28E33E90006DC3FC /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				96951C3B28E33F0A006DC3FC /* DetailsView.swift */,
+				96951C3D28E33F1E006DC3FC /* DetailsViewModel.swift */,
+				96951C3F28E33F29006DC3FC /* DetailsModel.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		96951C4128E33F2C006DC3FC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				96951C4228E33F45006DC3FC /* NetworkManeger.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		96951C4428E33F86006DC3FC /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				96951C1828E33C64006DC3FC /* AppDelegate.swift */,
+				96951C1A28E33C64006DC3FC /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +191,6 @@
 			files = (
 				96951C2528E33C65006DC3FC /* LaunchScreen.storyboard in Resources */,
 				96951C2228E33C65006DC3FC /* Assets.xcassets in Resources */,
-				96951C2028E33C64006DC3FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +201,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96951C1D28E33C64006DC3FC /* ViewController.swift in Sources */,
+				96951C3A28E33EFD006DC3FC /* PopularModel.swift in Sources */,
+				96951C3C28E33F0A006DC3FC /* DetailsView.swift in Sources */,
+				96951C3828E33EEE006DC3FC /* PopularViewModel.swift in Sources */,
+				96951C4328E33F45006DC3FC /* NetworkManeger.swift in Sources */,
+				96951C4028E33F29006DC3FC /* DetailsModel.swift in Sources */,
 				96951C1928E33C64006DC3FC /* AppDelegate.swift in Sources */,
+				96951C3228E33EBC006DC3FC /* UpcomingViewModel.swift in Sources */,
+				96951C3428E33ECA006DC3FC /* UpcomingModel.swift in Sources */,
+				96951C3E28E33F1E006DC3FC /* DetailsViewModel.swift in Sources */,
+				96951C3028E33EAE006DC3FC /* UpcomingView.swift in Sources */,
+				96951C3628E33EDD006DC3FC /* PopularView.swift in Sources */,
 				96951C1B28E33C64006DC3FC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +219,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		96951C1E28E33C64006DC3FC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96951C1F28E33C64006DC3FC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		96951C2328E33C65006DC3FC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +356,6 @@
 				INFOPLIST_FILE = DesafioMobile2019Teste14/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +383,6 @@
 				INFOPLIST_FILE = DesafioMobile2019Teste14/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
