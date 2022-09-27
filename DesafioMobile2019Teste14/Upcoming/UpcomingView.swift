@@ -12,6 +12,8 @@ class UpcomingView: UIViewController {
 
     private lazy var segmentedControl: UISegmentedControl = {
        let control = UISegmentedControl(items: ["Upcoming", "Popular"])
+        control.addTarget(nil, action: #selector(changeScreen), for: .valueChanged)
+        control.selectedSegmentIndex = 0
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
@@ -25,14 +27,6 @@ class UpcomingView: UIViewController {
         return label
     }()
     
-    private lazy var tableView: UITableView = {
-        let table = UITableView()
-        table.delegate = self
-        table.separatorStyle = .singleLine
-        table.translatesAutoresizingMaskIntoConstraints = false
-        return table
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,14 +35,12 @@ class UpcomingView: UIViewController {
         
         setupViews()
         setupContraints()
-       
     }
     
     private func setupViews() {
         
         view.addSubview(segmentedControl)
         view.addSubview(titleLabel)
-        view.addSubview(tableView)
         
     }
     
@@ -63,28 +55,17 @@ class UpcomingView: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
-            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
         
         ])
     }
+    
+    @objc func changeScreen() {
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            titleLabel.text = "Upcoming Movies"
+        } else {
+            titleLabel.text = "Popular Movies"
+        }
+    }
 }
 
-extension UpcomingView: UITableViewDataSource, UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
-    }
-    
-    
-}
