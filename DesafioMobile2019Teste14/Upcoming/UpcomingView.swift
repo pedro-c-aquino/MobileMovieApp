@@ -9,6 +9,7 @@ import UIKit
 
 class UpcomingView: UIViewController {
     
+
     private lazy var segmentedControl: UISegmentedControl = {
        let control = UISegmentedControl(items: ["Upcoming", "Popular"])
         control.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +41,7 @@ class UpcomingView: UIViewController {
         
         setupViews()
         setupContraints()
-        
+       
     }
     
     private func setupViews() {
