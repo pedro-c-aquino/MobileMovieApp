@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UpcomingView: UIViewController {
     
@@ -123,6 +124,16 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     func setupCell(cell: PopularMoviesCell?, indexPath: IndexPath) {
         cell?.labelDate.text = movies[indexPath.row].release_date
         cell?.labelTitle.text = movies[indexPath.row].title
+        guard let movieImagePath = movies[indexPath.row].backdrop_path else {
+            print("Unable to unwrap imagepath")
+            return
+        }
+        
+        let imageBaseString = "https://image.tmdb.org/t/p/original"
+        
+        let url = URL(string: imageBaseString + movieImagePath)
+        
+        cell?.movieBanner.sd_setImage(with: url, placeholderImage: UIImage(named: "download"))
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()

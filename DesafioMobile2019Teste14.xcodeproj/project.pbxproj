@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E0384AD28E4852E006C8758 /* PopularMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0384AC28E4852E006C8758 /* PopularMoviesCell.swift */; };
+		1325104128E4ACC100415027 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1325104028E4ACC100415027 /* SDWebImage */; };
 		36B5459828E478110087EFCA /* DetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B5459728E478110087EFCA /* DetailsViewCell.swift */; };
 		36B5459A28E4787F0087EFCA /* SetupViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B5459928E4787F0087EFCA /* SetupViews.swift */; };
 		96951C1928E33C64006DC3FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C1828E33C64006DC3FC /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1325104128E4ACC100415027 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,9 @@
 			dependencies = (
 			);
 			name = DesafioMobile2019Teste14;
+			packageProductDependencies = (
+				1325104028E4ACC100415027 /* SDWebImage */,
+			);
 			productName = DesafioMobile2019Teste14;
 			productReference = 96951C1528E33C64006DC3FC /* DesafioMobile2019Teste14.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +197,9 @@
 				Base,
 			);
 			mainGroup = 96951C0C28E33C63006DC3FC;
+			packageReferences = (
+				1325103F28E4ACC100415027 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 96951C1628E33C64006DC3FC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -440,6 +448,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1325103F28E4ACC100415027 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1325104028E4ACC100415027 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1325103F28E4ACC100415027 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 96951C0D28E33C63006DC3FC /* Project object */;
 }
