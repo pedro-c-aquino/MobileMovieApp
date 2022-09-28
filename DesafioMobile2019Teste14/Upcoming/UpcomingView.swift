@@ -9,7 +9,10 @@ import UIKit
 
 class UpcomingView: UIViewController {
     
-
+    private let upcomingViewModel = UpcomingViewModel()
+    
+    private var movies: [Result] = []
+    
     private lazy var segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Upcoming", "Popular"])
         control.backgroundColor = UIColor.black
@@ -43,7 +46,7 @@ class UpcomingView: UIViewController {
         collection.backgroundColor = #colorLiteral(red: 0.1999999881, green: 0.1999999881, blue: 0.1999999881, alpha: 1)
         collection.delegate = self
         collection.dataSource = self
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.register(PopularMoviesCell.self, forCellWithReuseIdentifier: "cell")
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
@@ -55,6 +58,9 @@ class UpcomingView: UIViewController {
         
         setupViews()
         setupContraints()
+        upcomingViewModel.delegate = self
+        upcomingViewModel.getUpcomingMovies()
+        
     }
     
     private func setupViews() {
@@ -104,15 +110,36 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? PopularMoviesCell
+        setupCell(cell: cell, indexPath: indexPath)
+        
+        return cell ?? UICollectionViewCell()
+    }
+    
+    func setupCell(cell: PopularMoviesCell?, indexPath: IndexPath) {
+        cell?.labelDate.text = movies[indexPath.row].release_date
+        cell?.labelTitle.text = movies[indexPath.row].title
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
         
 }
 
+extension UpcomingView: MovieDataProtocol {
+    func getMovieData(_ movies: [Result]) {
+        self.movies = movies
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+       
+    }
+    
+
+}

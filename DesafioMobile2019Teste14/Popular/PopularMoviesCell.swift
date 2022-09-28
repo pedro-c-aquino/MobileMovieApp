@@ -13,13 +13,13 @@ class PopularMoviesCell: UICollectionViewCell{
     var reuseId = "cell"
     
     
-    private lazy var movieBanner:UIImageView = {
+    lazy var movieBanner:UIImageView = {
         let movieBanner = UIImageView()
          movieBanner.translatesAutoresizingMaskIntoConstraints = false
         movieBanner.image = UIImage(named: "download")
         return movieBanner
     }()
-    private lazy var labelDate: UILabel = {
+    lazy var labelDate: UILabel = {
         let labelDate = UILabel()
         labelDate.translatesAutoresizingMaskIntoConstraints = false
         labelDate.text = "06/06/06"
@@ -44,11 +44,15 @@ class PopularMoviesCell: UICollectionViewCell{
         return stackView
     }()
     
-    private lazy var labelTitle: UILabel = {
+    lazy var labelTitle: UILabel = {
         let labelTitle = UILabel()
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         labelTitle.text = "Teste"
         labelTitle.textColor = .white
+        labelTitle.font = .systemFont(ofSize: 12)
+        labelTitle.numberOfLines = 3
+        labelTitle.adjustsFontSizeToFitWidth = true
+        
         return labelTitle
     }()
     
@@ -58,8 +62,9 @@ class PopularMoviesCell: UICollectionViewCell{
         
         contentView.addSubview(movieBanner)
         
-        contentView.addSubview(labelTitle)
+        
         contentView.addSubview(creditsStackView)
+        contentView.addSubview(labelTitle)
         setupConstrants()
     }
     
@@ -78,7 +83,10 @@ class PopularMoviesCell: UICollectionViewCell{
         
         
         labelTitle.topAnchor.constraint(equalTo: movieBanner.bottomAnchor,constant: 10),
-        labelTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5)
+        labelTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5),
+        labelTitle.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+        labelTitle.heightAnchor.constraint(equalToConstant: 30),
+        labelTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
       ])
     }
 }
