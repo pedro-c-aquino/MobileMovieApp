@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0384AB28E47253006C8758 /* PopularMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0384AA28E47253006C8758 /* PopularMoviesCell.swift */; };
 		96951C1928E33C64006DC3FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C1828E33C64006DC3FC /* AppDelegate.swift */; };
 		96951C1B28E33C64006DC3FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96951C1A28E33C64006DC3FC /* SceneDelegate.swift */; };
 		96951C2228E33C65006DC3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96951C2128E33C65006DC3FC /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0384AA28E47253006C8758 /* PopularMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesCell.swift; sourceTree = "<group>"; };
 		96951C1528E33C64006DC3FC /* DesafioMobile2019Teste14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioMobile2019Teste14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96951C1828E33C64006DC3FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96951C1A28E33C64006DC3FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				96951C3528E33EDD006DC3FC /* PopularView.swift */,
 				96951C3728E33EEE006DC3FC /* PopularViewModel.swift */,
 				96951C3928E33EFD006DC3FC /* PopularModel.swift */,
+				0E0384AA28E47253006C8758 /* PopularMoviesCell.swift */,
 			);
 			path = Popular;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				96951C3228E33EBC006DC3FC /* UpcomingViewModel.swift in Sources */,
 				96951C3428E33ECA006DC3FC /* UpcomingModel.swift in Sources */,
 				96951C3E28E33F1E006DC3FC /* DetailsViewModel.swift in Sources */,
+				0E0384AB28E47253006C8758 /* PopularMoviesCell.swift in Sources */,
 				96951C3028E33EAE006DC3FC /* UpcomingView.swift in Sources */,
 				96951C3628E33EDD006DC3FC /* PopularView.swift in Sources */,
 				96951C1B28E33C64006DC3FC /* SceneDelegate.swift in Sources */,
