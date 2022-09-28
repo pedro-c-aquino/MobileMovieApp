@@ -22,11 +22,11 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
         movieDateLabel.numberOfLines = 0
         let actorName = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)
                          , NSAttributedString.Key.foregroundColor : UIColor.white]
-        let actorRole = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
+        let actorRole = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
                          , NSAttributedString.Key.foregroundColor : UIColor.white]
         
         let attName = NSMutableAttributedString(string: "TEST TEST", attributes: actorName as [NSAttributedString.Key : Any])
-        let attRole = NSMutableAttributedString(string: "\nTest (test)", attributes: actorRole as [NSAttributedString.Key : Any])
+        let attRole = NSMutableAttributedString(string: "\n Test (test)", attributes: actorRole as [NSAttributedString.Key : Any])
         attName.append(attRole)
         movieDateLabel.attributedText = attName
         
@@ -42,7 +42,7 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     
     func setupView() {
         
-        contentView.backgroundColor = .gray
+        contentView.backgroundColor = .orange
         
     }
     
