@@ -29,9 +29,10 @@ class UpcomingView: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.scrollDirection = .vertical
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .green
+        collection.backgroundColor = .black
         collection.delegate = self
         collection.dataSource = self
         collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -68,10 +69,10 @@ class UpcomingView: UIViewController {
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.5)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 
         ])
     }
@@ -89,7 +90,8 @@ class UpcomingView: UIViewController {
 extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
+        
+        return CGSize(width: collectionView.frame.width/3.4, height: collectionView.frame.width/2)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -102,5 +104,6 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
         return cell
     }
     
+        
 }
 
