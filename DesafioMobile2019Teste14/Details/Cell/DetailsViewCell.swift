@@ -20,9 +20,18 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     let movieDateLabel: UILabel = {
         let movieDateLabel = UILabel()
         movieDateLabel.numberOfLines = 0
-        movieDateLabel.text = "TEST"
+        let actorName = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)
+                         , NSAttributedString.Key.foregroundColor : UIColor.white]
+        let actorRole = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
+                         , NSAttributedString.Key.foregroundColor : UIColor.white]
+        
+        let attName = NSMutableAttributedString(string: "TEST TEST", attributes: actorName as [NSAttributedString.Key : Any])
+        let attRole = NSMutableAttributedString(string: "\nTest (test)", attributes: actorRole as [NSAttributedString.Key : Any])
+        attName.append(attRole)
+        movieDateLabel.attributedText = attName
         
         return movieDateLabel
+        
     }()
     
     override init(frame: CGRect) {
