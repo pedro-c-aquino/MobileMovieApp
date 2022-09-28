@@ -41,7 +41,7 @@ class UpcomingView: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .vertical
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = #colorLiteral(red: 0.1999999881, green: 0.1999999881, blue: 0.1999999881, alpha: 1)
@@ -97,8 +97,16 @@ class UpcomingView: UIViewController {
         
         if segmentedControl.selectedSegmentIndex == 0 {
             titleLabel.text = "Upcoming Movies"
+            upcomingViewModel.getUpcomingMovies()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         } else {
             titleLabel.text = "Popular Movies"
+            upcomingViewModel.getPopularMovies()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
 }
@@ -107,7 +115,7 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width/3.4, height: collectionView.frame.width/2)
+        return CGSize(width: collectionView.frame.width/3.2, height: collectionView.frame.width/1.8)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -122,7 +130,7 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     }
     
     func setupCell(cell: PopularMoviesCell?, indexPath: IndexPath) {
-        cell?.labelDate.text = movies[indexPath.row].release_date
+        cell?.labelDate.text = upcomingViewModel.setupDate(movies[indexPath.row].release_date)
         cell?.labelTitle.text = movies[indexPath.row].title
         guard let movieImagePath = movies[indexPath.row].backdrop_path else {
             print("Unable to unwrap imagepath")
