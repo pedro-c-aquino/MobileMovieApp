@@ -49,16 +49,28 @@ class DetailsView: UIViewController{
     
     private let lineView : UIView = {
         let lineView  = UIView()
-        lineView .backgroundColor = .white
+        lineView .backgroundColor = .gray
         lineView .translatesAutoresizingMaskIntoConstraints = false
         return lineView
     }()
     
     private let titleLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)
-        titleLabel.font = UIFont(name: "Kailase", size: 10)
-        titleLabel.textColor = .white
-        titleLabel.numberOfLines = 0
+  
+        let filmName = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)
+                        , NSAttributedString.Key.foregroundColor : UIColor.white]
+        
+        
+        let filmDate = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
+                        , NSAttributedString.Key.foregroundColor : UIColor.gray]
+        
+        let attString1 = NSMutableAttributedString(string: "TEST ", attributes: filmName as [NSAttributedString.Key : Any])
+        
+        let attString2 = NSMutableAttributedString(string: "2022", attributes: filmDate as [NSAttributedString.Key : Any])
+        
+        attString1.append(attString2)
+        titleLabel.attributedText = attString1
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
     
@@ -80,18 +92,18 @@ class DetailsView: UIViewController{
     
     
     private let descriptionFilm : UILabel = {
-        let label = UILabel()
-        label.text = "TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST "
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        return label
+        let descriptionFilm = UILabel()
+        descriptionFilm.text = "TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST "
+        descriptionFilm.numberOfLines = 0
+        descriptionFilm.translatesAutoresizingMaskIntoConstraints = false
+        descriptionFilm.textColor = .white
+        return descriptionFilm
         
     }()
     
     override func viewDidLoad() {
         
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .black
         
         scrollView.addSubview(viewInScroll)
         viewInScroll.addSubview(detailImage)
@@ -113,7 +125,7 @@ class DetailsView: UIViewController{
             detailImage.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor),
             detailImage.trailingAnchor.constraint(equalTo: viewInScroll.trailingAnchor),
             detailImage.topAnchor.constraint(equalTo: viewInScroll.topAnchor),
-            detailImage.heightAnchor.constraint(equalToConstant: 400),
+            detailImage.heightAnchor.constraint(equalToConstant: 350),
             
             
             titleLabel.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor,constant: 20),
@@ -148,6 +160,7 @@ class DetailsView: UIViewController{
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+//
             
      
         ])

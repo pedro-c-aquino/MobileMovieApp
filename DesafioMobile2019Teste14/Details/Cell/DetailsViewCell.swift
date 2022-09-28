@@ -11,15 +11,13 @@ import UIKit
 class DetailsViewCell: UICollectionViewCell, SetupView {
     
     let movieImage: UIImageView = {
+        let movieImage = UIImageView()
+        movieImage.backgroundColor = .cyan
         
-        let imageview = UIImageView()
-        imageview.backgroundColor = .cyan
-        
-        return imageview
+        return movieImage
     }()
     
     let movieDateLabel: UILabel = {
-        
         let movieDateLabel = UILabel()
         movieDateLabel.numberOfLines = 0
         movieDateLabel.text = "TEST"
@@ -28,16 +26,15 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     }()
     
     override init(frame: CGRect) {
-        
         super.init(frame: frame)
-        
         setupView()
         setupConstraints()
     }
     
     func setupView() {
         
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .gray
+        
     }
     
     func setupConstraints() {
@@ -46,7 +43,6 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
         contentView.addSubview(movieDateLabel)
         
         movieImage.translatesAutoresizingMaskIntoConstraints = false
-       
         movieDateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         movieImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
@@ -56,10 +52,8 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
         
         movieDateLabel.centerXAnchor.constraint(equalTo: movieImage.centerXAnchor).isActive = true
         movieDateLabel.bottomAnchor.constraint(equalTo: movieImage.bottomAnchor).isActive = true
-        
-      
-    }
     
+    }
     required init?(coder: NSCoder) {
         
         fatalError("init(coder:) has not been implemented")
