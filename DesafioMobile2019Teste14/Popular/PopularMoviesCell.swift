@@ -12,6 +12,7 @@ class PopularMoviesCell: UICollectionViewCell{
     
     var reuseId = "cell"
     
+    
     private lazy var movieBanner:UIImageView = {
         let movieBanner = UIImageView()
          movieBanner.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +24,32 @@ class PopularMoviesCell: UICollectionViewCell{
         labelDate.translatesAutoresizingMaskIntoConstraints = false
         labelDate.text = "06/06/06"
         labelDate.textColor = .white
+        labelDate.font = .boldSystemFont(ofSize: 10)
+        
         return labelDate
+    }()
+    
+    lazy var creditsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [labelDate])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        //stackView.alignment = .center
+        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 7, bottom: 5, right: 7)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        stackView.layer.borderWidth = 1
+        
+        
+        
+        return stackView
+    }()
+    
+    private lazy var labelTitle: UILabel = {
+        let labelTitle = UILabel()
+        labelTitle.translatesAutoresizingMaskIntoConstraints = false
+        labelTitle.text = "Teste"
+        labelTitle.textColor = .white
+        return labelTitle
     }()
     
     override init(frame: CGRect) {
@@ -31,7 +57,9 @@ class PopularMoviesCell: UICollectionViewCell{
         super.init(frame: frame)
         
         contentView.addSubview(movieBanner)
-        contentView.addSubview(labelDate)
+        
+        contentView.addSubview(labelTitle)
+        contentView.addSubview(creditsStackView)
         setupConstrants()
     }
     
@@ -43,9 +71,14 @@ class PopularMoviesCell: UICollectionViewCell{
         movieBanner.topAnchor.constraint(equalTo: contentView.topAnchor),
         movieBanner.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         movieBanner.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+       // movieBanner.bottomAnchor.constraint(equalTo: labelTitle.topAnchor),
         
-        labelDate.bottomAnchor.constraint(equalTo: movieBanner.bottomAnchor, constant: -5),
-        labelDate.centerXAnchor.constraint(equalTo: movieBanner.centerXAnchor)
+        creditsStackView.bottomAnchor.constraint(equalTo: movieBanner.bottomAnchor, constant: -5),
+        creditsStackView.centerXAnchor.constraint(equalTo: movieBanner.centerXAnchor),
+        
+        
+        labelTitle.topAnchor.constraint(equalTo: movieBanner.bottomAnchor,constant: 10),
+        labelTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5)
       ])
     }
 }

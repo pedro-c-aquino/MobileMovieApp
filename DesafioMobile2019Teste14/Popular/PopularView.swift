@@ -29,7 +29,7 @@ private lazy var collectionView: UICollectionView = {
    let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collection.backgroundColor = .green
+    collection.backgroundColor = #colorLiteral(red: 0.1999999881, green: 0.1999999881, blue: 0.1999999881, alpha: 1)
     collection.delegate = self
     collection.dataSource = self
     collection.register(PopularMoviesCell.self, forCellWithReuseIdentifier: "cell")
