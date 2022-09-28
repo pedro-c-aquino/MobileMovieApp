@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailsView: UIViewController{
-
+    var movieId: Int?
     let cell = "Cell"
     
     private let scrollView : UIScrollView = {
@@ -19,7 +19,7 @@ class DetailsView: UIViewController{
         return scroll
         
     }()
-    private let detailImage : UIImageView = {
+    lazy var detailImage : UIImageView = {
         let detailImage = UIImageView()
         detailImage.backgroundColor = .red
         detailImage.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,7 @@ class DetailsView: UIViewController{
         return lineView
     }()
     
-    private let titleLabel: UILabel = {
+     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)
   
         let filmName = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 25)
@@ -93,7 +93,7 @@ class DetailsView: UIViewController{
         return colection
     }()
 
-    private let descriptionFilm : UILabel = {
+    lazy var descriptionFilm : UILabel = {
         let descriptionFilm = UILabel()
         descriptionFilm.text = "TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST "
         descriptionFilm.numberOfLines = 0

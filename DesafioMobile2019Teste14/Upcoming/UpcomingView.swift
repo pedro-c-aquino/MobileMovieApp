@@ -147,7 +147,26 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
             self.collectionView.reloadData()
         }
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       let vc = DetailsView()
+        vc.movieId = movies[indexPath.row].id
+        vc.titleLabel.text = movies[indexPath.row].title
+        vc.descriptionFilm.text = movies[indexPath.row].overview
+        
+        guard let movieImagePath = movies[indexPath.row].poster_path else {
+            print("Unable to unwrap imagepath")
+            return
+        }
+        
+        let imageBaseString = "https://image.tmdb.org/t/p/original"
+        
+        let url = URL(string: imageBaseString + movieImagePath)
+        
+        vc.detailImage.sd_setImage(with:url)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+       
+    }
         
 }
 
