@@ -9,12 +9,8 @@
 import UIKit
 
 class DetailsView: UIViewController{
-    
 
-    
     let cell = "Cell"
-    
-    
     
     private let scrollView : UIScrollView = {
         let scroll = UIScrollView()
@@ -33,10 +29,19 @@ class DetailsView: UIViewController{
     
     private let filmInfoLabel : UILabel = {
         let filmInfoLabel = UILabel()
-        filmInfoLabel.text = "120m"
+        
+         let filmTime = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
+                        , NSAttributedString.Key.foregroundColor : UIColor.gray]
+        let filmGenre = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
+                        , NSAttributedString.Key.foregroundColor : UIColor.gray]
+        
+        let attTime =   NSMutableAttributedString(string: "000m | ", attributes: filmTime as [NSAttributedString.Key : Any])
+        let attGenre =  NSMutableAttributedString(string: "TEST, TEST, TEST", attributes: filmTime as [NSAttributedString.Key : Any])
+        
+        attTime.append(attGenre)
+        filmInfoLabel.attributedText = attTime
         filmInfoLabel.numberOfLines = 0
         filmInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-        filmInfoLabel.textColor = .white
         return filmInfoLabel
         
     }()
@@ -59,13 +64,10 @@ class DetailsView: UIViewController{
   
         let filmName = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)
                         , NSAttributedString.Key.foregroundColor : UIColor.white]
-        
-        
         let filmDate = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
                         , NSAttributedString.Key.foregroundColor : UIColor.gray]
         
         let attString1 = NSMutableAttributedString(string: "TEST ", attributes: filmName as [NSAttributedString.Key : Any])
-        
         let attString2 = NSMutableAttributedString(string: "2022", attributes: filmDate as [NSAttributedString.Key : Any])
         
         attString1.append(attString2)
@@ -89,8 +91,7 @@ class DetailsView: UIViewController{
         colection.register(DetailsViewCell.self, forCellWithReuseIdentifier: cell)
         return colection
     }()
-    
-    
+
     private let descriptionFilm : UILabel = {
         let descriptionFilm = UILabel()
         descriptionFilm.text = "TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST "
@@ -120,6 +121,7 @@ class DetailsView: UIViewController{
     }
     
     func setupContraints(){
+        
         NSLayoutConstraint.activate([
             
             detailImage.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor),
@@ -160,11 +162,8 @@ class DetailsView: UIViewController{
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//
-            
      
         ])
-        
     }
 }
 
