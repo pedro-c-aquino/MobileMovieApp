@@ -62,13 +62,13 @@ class DetailsView: UIViewController{
     private let titleLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)
   
-        let filmName = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)
+        let filmName = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 25)
                         , NSAttributedString.Key.foregroundColor : UIColor.white]
-        let filmDate = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
+        let filmDate = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)
                         , NSAttributedString.Key.foregroundColor : UIColor.gray]
         
         let attString1 = NSMutableAttributedString(string: "TEST ", attributes: filmName as [NSAttributedString.Key : Any])
-        let attString2 = NSMutableAttributedString(string: "2022", attributes: filmDate as [NSAttributedString.Key : Any])
+        let attString2 = NSMutableAttributedString(string: " 2022", attributes: filmDate as [NSAttributedString.Key : Any])
         
         attString1.append(attString2)
         titleLabel.attributedText = attString1
@@ -83,6 +83,7 @@ class DetailsView: UIViewController{
         layout.itemSize.height = 150
         layout.itemSize.width = view.frame.width/3
         let colection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        colection.backgroundColor = #colorLiteral(red: 0.1215686426, green: 0.1215686426, blue: 0.1215686426, alpha: 1)
         colection.dataSource = self
         colection.delegate = self
         colection.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +105,7 @@ class DetailsView: UIViewController{
     
     override func viewDidLoad() {
         
-        view.backgroundColor = .black
+        view.backgroundColor = #colorLiteral(red: 0.1215686426, green: 0.1215686426, blue: 0.1215686426, alpha: 1)
         
         scrollView.addSubview(viewInScroll)
         viewInScroll.addSubview(detailImage)
