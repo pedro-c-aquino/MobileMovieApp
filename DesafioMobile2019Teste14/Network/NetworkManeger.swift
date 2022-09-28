@@ -13,7 +13,7 @@ class NetworkManager {
     
     func getMovies<T: Codable> (movieType: String, completionHandler: @escaping (T) -> Void) {
         
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieType)?api_key=\(apiKey)") else { return }
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieType)?api_key=\(apiKey)&language=pt-BR") else { return }
         
         var request = URLRequest(url: url)
         

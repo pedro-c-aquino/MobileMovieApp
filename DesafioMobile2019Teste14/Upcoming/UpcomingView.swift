@@ -143,7 +143,7 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
         
         cell?.movieBanner.sd_setImage(with: url, placeholderImage: UIImage(named: "download"))
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             self.collectionView.reloadData()
         }
     }
