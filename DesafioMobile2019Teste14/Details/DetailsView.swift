@@ -8,16 +8,7 @@
 
 import UIKit
 
-class DetailsView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as? DetailsViewCell
-        
-        return  cell ?? UICollectionViewCell()
-    }
+class DetailsView: UIViewController{
     
 
     
@@ -147,16 +138,16 @@ class DetailsView: UIViewController, UICollectionViewDataSource, UICollectionVie
             descriptionFilm.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             descriptionFilm.trailingAnchor.constraint(equalTo: viewInScroll.trailingAnchor),
             
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
             viewInScroll.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             viewInScroll.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             viewInScroll.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             viewInScroll.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             viewInScroll.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
      
         ])
@@ -164,4 +155,14 @@ class DetailsView: UIViewController, UICollectionViewDataSource, UICollectionVie
     }
 }
 
-
+extension DetailsView:UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as? DetailsViewCell
+        
+        return  cell ?? UICollectionViewCell()
+    }
+}
