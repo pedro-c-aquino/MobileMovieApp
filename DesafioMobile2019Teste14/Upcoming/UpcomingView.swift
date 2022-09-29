@@ -15,7 +15,7 @@ class UpcomingView: UIViewController {
     private var movies: [Result] = []
     
     private lazy var segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["Upcoming", "Popular"])
+        let control = UISegmentedControl(items: ["Em Breve", "Populares"])
         control.backgroundColor = UIColor.black
         control.layer.borderColor = UIColor.white.cgColor
         control.selectedSegmentTintColor = UIColor.white
@@ -33,7 +33,7 @@ class UpcomingView: UIViewController {
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .left
-        label.text = "Upcoming Movies"
+        label.text = "Em Breve"
         label.font = UIFont.boldSystemFont(ofSize: 32)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,7 +41,6 @@ class UpcomingView: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .vertical
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = #colorLiteral(red: 0.1999999881, green: 0.1999999881, blue: 0.1999999881, alpha: 1)
@@ -96,13 +95,13 @@ class UpcomingView: UIViewController {
     @objc func changeScreen() {
         
         if segmentedControl.selectedSegmentIndex == 0 {
-            titleLabel.text = "Upcoming Movies"
+            titleLabel.text = "Em Breve"
             upcomingViewModel.getUpcomingMovies()
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         } else {
-            titleLabel.text = "Popular Movies"
+            titleLabel.text = "Filmes Populares"
             upcomingViewModel.getPopularMovies()
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -141,12 +140,12 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
         
         let url = URL(string: imageBaseString + movieImagePath)
         
-        cell?.movieBanner.sd_setImage(with: url, placeholderImage: UIImage(named: "download"))
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async {
+            cell?.movieBanner.sd_setImage(with: url, placeholderImage: UIImage(named: "download"))
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        let vc = DetailsView()
         vc.movieId = movies[indexPath.row].id
