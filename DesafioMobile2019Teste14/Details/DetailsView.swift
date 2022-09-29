@@ -42,10 +42,11 @@ class DetailsView: UIViewController{
     
     lazy var filmInfoLabel : UILabel = {
         let filmInfoLabel = UILabel()
-        filmInfoLabel.font = UIFont.systemFont(ofSize: 18.0)
+        filmInfoLabel.font = UIFont.systemFont(ofSize: 15)
         filmInfoLabel.text = "\(movieDetails?.runtime ?? 0)m | "
         filmInfoLabel.textColor = .gray
         filmInfoLabel.numberOfLines = 0
+        filmInfoLabel.adjustsFontSizeToFitWidth = true
         filmInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         return filmInfoLabel
         
@@ -53,10 +54,11 @@ class DetailsView: UIViewController{
     
     lazy var genreLabel : UILabel = {
         let genreLabel = UILabel()
-        genreLabel.font = UIFont.systemFont(ofSize: 18.0)
+        genreLabel.font = UIFont.systemFont(ofSize: 15)
         genreLabel.text = detailsViewModel.getGenresString(genresArray: movieDetails?.genres)
         genreLabel.textColor = .gray
         genreLabel.numberOfLines = 0
+        genreLabel.adjustsFontSizeToFitWidth = true
         genreLabel.translatesAutoresizingMaskIntoConstraints = false
         return genreLabel
     }()
@@ -81,6 +83,7 @@ class DetailsView: UIViewController{
          titleLabel.text = "TEST"
          titleLabel.numberOfLines = 0
          titleLabel.textColor = .white
+         titleLabel.adjustsFontSizeToFitWidth = true
          titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
@@ -91,6 +94,7 @@ class DetailsView: UIViewController{
         dateLabel.text = detailsViewModel.getYearString(dateString: movieDetails?.release_date)
         dateLabel.numberOfLines = 0
         dateLabel.textColor = .lightGray
+        dateLabel.adjustsFontSizeToFitWidth = true
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         return dateLabel
     }()
@@ -157,19 +161,21 @@ class DetailsView: UIViewController{
             backButton.topAnchor.constraint(equalTo: detailImage.topAnchor, constant: 10),
             
             titleLabel.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor,constant: 20),
+            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.81),
             titleLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor,constant: 20),
             
-            dateLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 50),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             dateLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor, constant: 20),
             
             filmInfoLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            filmInfoLabel.trailingAnchor.constraint(equalTo: viewInScroll.trailingAnchor),
+
             filmInfoLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 12),
             
-            genreLabel.leadingAnchor.constraint(equalTo: filmInfoLabel.leadingAnchor, constant: 50),
+            genreLabel.leadingAnchor.constraint(equalTo: filmInfoLabel.trailingAnchor),
+            genreLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             genreLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             
-            collectionView.topAnchor.constraint(equalTo: filmInfoLabel.bottomAnchor,constant: 20),
+            collectionView.topAnchor.constraint(equalTo: genreLabel.bottomAnchor,constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: viewInScroll.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 150),
@@ -206,11 +212,45 @@ class DetailsView: UIViewController{
 
 extension DetailsView:UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return cast.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cell, for: indexPath) as? DetailsViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? DetailsViewCell
+        
+        let imageBaseString = "https://image.tmdb.org/t/p/original"
+        
+        if indexPath.row == 0 {
+            guard let posterPath = movieDetails?.poster_path else {
+                print("Unable to return poster path")
+                return cell ?? UICollectionViewCell()
+            }
+            
+            let url = URL(string: imageBaseString + posterPath)
+            
+            DispatchQueue.main.async {
+                cell?.movieImage.sd_setImage(with: url, placeholderImage: UIImage(named: "download"))
+                cell?.actorsNameLabel.text = ""
+                cell?.actorsRoleLabel.text = ""
+            }
+           
+            
+        } else {
+            guard let profilePath = cast[indexPath.row - 1].profile_path else {
+                print("Unable to unwrap proflie path")
+                cell?.movieImage.image = UIImage(named: "download")
+                return cell ?? UICollectionViewCell()
+            }
+            
+            let url = URL(string: imageBaseString + profilePath)
+            
+            DispatchQueue.main.async {
+                cell?.movieImage.sd_setImage(with: url, placeholderImage: UIImage(named: "download"))
+                cell?.actorsNameLabel.text = self.cast[indexPath.row - 1].name
+                cell?.actorsRoleLabel.text = self.cast[indexPath.row - 1].character
+            }
+        }
+        
         
         return  cell ?? UICollectionViewCell()
     }

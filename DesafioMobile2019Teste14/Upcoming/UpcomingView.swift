@@ -134,7 +134,7 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     func setupCell(cell: PopularMoviesCell?, indexPath: IndexPath) {
         cell?.labelDate.text = upcomingViewModel.setupDate(movies[indexPath.row].release_date)
         cell?.labelTitle.text = movies[indexPath.row].title
-        guard let movieImagePath = movies[indexPath.row].backdrop_path else {
+        guard let movieImagePath = movies[indexPath.row].poster_path else {
             print("Unable to unwrap imagepath")
             return
         }
@@ -189,7 +189,7 @@ extension UpcomingView: MovieDataProtocol {
             vc.titleLabel.text = self.movies[indexPath.row].title
             vc.descriptionFilm.text = self.movies[indexPath.row].overview
             vc.cast = self.cast
-            guard let movieImagePath = self.movies[indexPath.row].poster_path else {
+            guard let movieImagePath = self.movies[indexPath.row].backdrop_path else {
                 print("Unable to unwrap imagepath")
                 return
             }

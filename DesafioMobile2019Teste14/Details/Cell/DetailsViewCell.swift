@@ -20,8 +20,9 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     let actorsNameLabel: UILabel = {
         let movieDateLabel = UILabel()
         movieDateLabel.text = "TEST1"
-        movieDateLabel.numberOfLines = 0
-        movieDateLabel.textColor = .gray
+        movieDateLabel.numberOfLines = 3
+        movieDateLabel.font = .systemFont(ofSize: 12, weight: .bold)
+        movieDateLabel.textColor = .white
         
         return movieDateLabel
         
@@ -30,8 +31,9 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     lazy var actorsRoleLabel: UILabel = {
         let actorsRoleLabel = UILabel(frame: .zero)
         actorsRoleLabel.text = "TEST2"
-        actorsRoleLabel.numberOfLines = 0
-        actorsRoleLabel.textColor = .gray
+        actorsRoleLabel.numberOfLines = 4
+        actorsRoleLabel.font = .systemFont(ofSize: 12, weight: .bold)
+        actorsRoleLabel.textColor = .white
         actorsRoleLabel.translatesAutoresizingMaskIntoConstraints = false
         return actorsRoleLabel
     }()
@@ -66,9 +68,11 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
         
         actorsNameLabel.centerXAnchor.constraint(equalTo: movieImage.centerXAnchor).isActive = true
         actorsNameLabel.bottomAnchor.constraint(equalTo: actorsRoleLabel.topAnchor).isActive = true
+        actorsNameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8).isActive = true
         
         actorsRoleLabel.centerXAnchor.constraint(equalTo: movieImage.centerXAnchor).isActive = true
         actorsRoleLabel.bottomAnchor.constraint(equalTo: movieImage.bottomAnchor, constant: -10).isActive = true
+        actorsRoleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8).isActive = true
     
     }
     required init?(coder: NSCoder) {
