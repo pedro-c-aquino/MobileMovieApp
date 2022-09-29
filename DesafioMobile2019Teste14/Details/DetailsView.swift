@@ -15,11 +15,20 @@ class DetailsView: UIViewController{
     let cell = "Cell"
     var movieDetails: MovieDetails?
     
+    private let backButton : UIButton = {
+        let backButton = UIButton()
+        backButton.setImage(UIImage(systemName: "chevron.left"), for:.normal)
+        backButton.tintColor = .red
+        backButton.addTarget(self, action: #selector(tapDismiss), for: .touchUpInside)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        return backButton
+    }()
+    
     private let scrollView : UIScrollView = {
-        let scroll = UIScrollView()
-        scroll.bounces = true
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        return scroll
+        let scrollView = UIScrollView()
+        scrollView.bounces = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
         
     }()
     lazy var detailImage : UIImageView = {
@@ -32,6 +41,7 @@ class DetailsView: UIViewController{
     
     lazy var filmInfoLabel : UILabel = {
         let filmInfoLabel = UILabel()
+        filmInfoLabel.font = UIFont.systemFont(ofSize: 18.0)
         filmInfoLabel.text = "\(movieDetails?.runtime ?? 0)m | "
         filmInfoLabel.textColor = .gray
         filmInfoLabel.numberOfLines = 0
@@ -42,6 +52,7 @@ class DetailsView: UIViewController{
     
     lazy var genreLabel : UILabel = {
         let genreLabel = UILabel()
+        genreLabel.font = UIFont.systemFont(ofSize: 18.0)
         genreLabel.text = detailsViewModel.getGenresString(genresArray: movieDetails?.genres)
         genreLabel.textColor = .gray
         genreLabel.numberOfLines = 0
@@ -65,19 +76,20 @@ class DetailsView: UIViewController{
     
      lazy var titleLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)
-  
+         titleLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
          titleLabel.text = "TEST"
          titleLabel.numberOfLines = 0
          titleLabel.textColor = .white
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
     
     lazy var dateLabel: UILabel = {
         let dateLabel = UILabel(frame: .zero)
+        dateLabel.font = UIFont.systemFont(ofSize: 18.0)
         dateLabel.text = detailsViewModel.getYearString(dateString: movieDetails?.release_date)
         dateLabel.numberOfLines = 0
-        dateLabel.textColor = .gray
+        dateLabel.textColor = .lightGray
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         return dateLabel
     }()
@@ -101,7 +113,8 @@ class DetailsView: UIViewController{
 
     lazy var descriptionFilm : UILabel = {
         let descriptionFilm = UILabel()
-        descriptionFilm.text = "TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST "
+        descriptionFilm.font = UIFont.systemFont(ofSize: 15.0)
+        descriptionFilm.text = "test description film "
         descriptionFilm.numberOfLines = 0
         descriptionFilm.translatesAutoresizingMaskIntoConstraints = false
         descriptionFilm.textColor = .white
@@ -115,6 +128,7 @@ class DetailsView: UIViewController{
         
         scrollView.addSubview(viewInScroll)
         viewInScroll.addSubview(detailImage)
+        viewInScroll.addSubview(backButton)
         viewInScroll.addSubview(titleLabel)
         viewInScroll.addSubview(dateLabel)
         viewInScroll.addSubview(filmInfoLabel)
@@ -138,11 +152,13 @@ class DetailsView: UIViewController{
             detailImage.topAnchor.constraint(equalTo: viewInScroll.topAnchor),
             detailImage.heightAnchor.constraint(equalToConstant: 350),
             
+            backButton.leadingAnchor.constraint(equalTo: detailImage.leadingAnchor, constant: 12),
+            backButton.topAnchor.constraint(equalTo: detailImage.topAnchor, constant: 10),
             
             titleLabel.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor,constant: 20),
             titleLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor,constant: 20),
             
-            dateLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 60),
+            dateLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 50),
             dateLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor, constant: 20),
             
             filmInfoLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -179,6 +195,11 @@ class DetailsView: UIViewController{
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
      
         ])
+    }
+    
+    @objc private func tapDismiss(){
+        
+        self.dismiss(animated: true)
     }
 }
 
