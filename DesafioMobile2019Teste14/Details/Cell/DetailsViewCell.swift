@@ -17,21 +17,23 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
         return movieImage
     }()
     
-    let movieDateLabel: UILabel = {
+    let actorsNameLabel: UILabel = {
         let movieDateLabel = UILabel()
+        movieDateLabel.text = "TEST1"
         movieDateLabel.numberOfLines = 0
-        let actorName = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)
-                         , NSAttributedString.Key.foregroundColor : UIColor.white]
-        let actorRole = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
-                         , NSAttributedString.Key.foregroundColor : UIColor.white]
-        
-        let attName = NSMutableAttributedString(string: "TEST TEST", attributes: actorName as [NSAttributedString.Key : Any])
-        let attRole = NSMutableAttributedString(string: "\n Test (test)", attributes: actorRole as [NSAttributedString.Key : Any])
-        attName.append(attRole)
-        movieDateLabel.attributedText = attName
+        movieDateLabel.textColor = .gray
         
         return movieDateLabel
         
+    }()
+    
+    lazy var actorsRoleLabel: UILabel = {
+        let actorsRoleLabel = UILabel(frame: .zero)
+        actorsRoleLabel.text = "TEST2"
+        actorsRoleLabel.numberOfLines = 0
+        actorsRoleLabel.textColor = .gray
+        actorsRoleLabel.translatesAutoresizingMaskIntoConstraints = false
+        return actorsRoleLabel
     }()
     
     override init(frame: CGRect) {
@@ -49,18 +51,23 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     func setupConstraints() {
         
         contentView.addSubview(movieImage)
-        contentView.addSubview(movieDateLabel)
+        contentView.addSubview(actorsNameLabel)
+        contentView.addSubview(actorsRoleLabel)
         
         movieImage.translatesAutoresizingMaskIntoConstraints = false
-        movieDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        actorsNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        actorsRoleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         movieImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         movieImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         movieImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
-        movieDateLabel.centerXAnchor.constraint(equalTo: movieImage.centerXAnchor).isActive = true
-        movieDateLabel.bottomAnchor.constraint(equalTo: movieImage.bottomAnchor).isActive = true
+        actorsNameLabel.centerXAnchor.constraint(equalTo: movieImage.centerXAnchor).isActive = true
+        actorsNameLabel.bottomAnchor.constraint(equalTo: actorsRoleLabel.topAnchor).isActive = true
+        
+        actorsRoleLabel.centerXAnchor.constraint(equalTo: movieImage.centerXAnchor).isActive = true
+        actorsRoleLabel.bottomAnchor.constraint(equalTo: movieImage.bottomAnchor, constant: -10).isActive = true
     
     }
     required init?(coder: NSCoder) {

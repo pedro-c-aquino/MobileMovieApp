@@ -27,24 +27,25 @@ class DetailsView: UIViewController{
         
     }()
     
-    private let filmInfoLabel : UILabel = {
+    lazy var filmInfoLabel : UILabel = {
         let filmInfoLabel = UILabel()
-        
-         let filmTime = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
-                        , NSAttributedString.Key.foregroundColor : UIColor.gray]
-        let filmGenre = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)
-                        , NSAttributedString.Key.foregroundColor : UIColor.gray]
-        
-        let attTime =   NSMutableAttributedString(string: "000m | ", attributes: filmTime as [NSAttributedString.Key : Any])
-        let attGenre =  NSMutableAttributedString(string: "TEST, TEST, TEST", attributes: filmTime as [NSAttributedString.Key : Any])
-        
-        attTime.append(attGenre)
-        filmInfoLabel.attributedText = attTime
+        filmInfoLabel.text = "TEST"
+        filmInfoLabel.textColor = .gray
         filmInfoLabel.numberOfLines = 0
         filmInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         return filmInfoLabel
         
     }()
+    
+    lazy var genreLabel : UILabel = {
+        let genreLabel = UILabel()
+        genreLabel.text = "TEST3"
+        genreLabel.textColor = .gray
+        genreLabel.numberOfLines = 0
+        genreLabel.translatesAutoresizingMaskIntoConstraints = false
+        return genreLabel
+    }()
+    
     
     private let viewInScroll : UIView = {
         let view = UIView()
@@ -62,18 +63,20 @@ class DetailsView: UIViewController{
      lazy var titleLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)
   
-        let filmName = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 25)
-                        , NSAttributedString.Key.foregroundColor : UIColor.white]
-        let filmDate = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)
-                        , NSAttributedString.Key.foregroundColor : UIColor.gray]
-        
-        let attString1 = NSMutableAttributedString(string: "TEST ", attributes: filmName as [NSAttributedString.Key : Any])
-        let attString2 = NSMutableAttributedString(string: " 2022", attributes: filmDate as [NSAttributedString.Key : Any])
-        
-        attString1.append(attString2)
-        titleLabel.attributedText = attString1
+         titleLabel.text = "TEST"
+         titleLabel.numberOfLines = 0
+         titleLabel.textColor = .white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
+    }()
+    
+    lazy var dateLabel: UILabel = {
+        let dateLabel = UILabel(frame: .zero)
+        dateLabel.text = "TEST2"
+        dateLabel.numberOfLines = 0
+        dateLabel.textColor = .gray
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        return dateLabel
     }()
     
     private lazy var collectionView : UICollectionView = {
@@ -110,7 +113,9 @@ class DetailsView: UIViewController{
         scrollView.addSubview(viewInScroll)
         viewInScroll.addSubview(detailImage)
         viewInScroll.addSubview(titleLabel)
+        viewInScroll.addSubview(dateLabel)
         viewInScroll.addSubview(filmInfoLabel)
+        viewInScroll.addSubview(genreLabel)
         viewInScroll.addSubview(collectionView)
         viewInScroll.addSubview(descriptionFilm)
         viewInScroll.addSubview(lineView)
@@ -134,9 +139,15 @@ class DetailsView: UIViewController{
             titleLabel.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor,constant: 20),
             titleLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor,constant: 20),
             
+            dateLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 60),
+            dateLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor, constant: 20),
+            
             filmInfoLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             filmInfoLabel.trailingAnchor.constraint(equalTo: viewInScroll.trailingAnchor),
             filmInfoLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 12),
+            
+            genreLabel.leadingAnchor.constraint(equalTo: filmInfoLabel.leadingAnchor, constant: 50),
+            genreLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             
             collectionView.topAnchor.constraint(equalTo: filmInfoLabel.bottomAnchor,constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
