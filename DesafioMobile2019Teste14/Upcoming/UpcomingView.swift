@@ -74,6 +74,10 @@ class UpcomingView: UIViewController {
         
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.collectionView.reloadData()
+    }
+    
     private func setupContraints() {
         
         NSLayoutConstraint.activate([
@@ -117,7 +121,12 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width/3.2, height: collectionView.frame.width/1.8)
+        if UIDevice.current.orientation.isLandscape {
+            return CGSize(width: collectionView.frame.width/8, height: collectionView.frame.width/4)
+        } else {
+            return CGSize(width: collectionView.frame.width/3.2, height: collectionView.frame.width/1.8)
+        }
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
