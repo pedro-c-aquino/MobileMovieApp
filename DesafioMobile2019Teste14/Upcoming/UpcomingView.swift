@@ -13,6 +13,7 @@ class UpcomingView: UIViewController {
     private let upcomingViewModel = UpcomingViewModel()
     
     private var movies: [Result] = []
+    private var cast: [Cast] = []
     
     private var movieDetail: MovieDetails?
     
@@ -162,6 +163,11 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
 }
 
 extension UpcomingView: MovieDataProtocol {
+    func getCredits(_ cast: [Cast]) {
+        self.cast = cast
+        
+    }
+    
     func getMovieData(_ movies: [Result]) {
         self.movies = movies
         DispatchQueue.main.async {
@@ -182,7 +188,7 @@ extension UpcomingView: MovieDataProtocol {
             vc.movieId = movieId
             vc.titleLabel.text = self.movies[indexPath.row].title
             vc.descriptionFilm.text = self.movies[indexPath.row].overview
-            
+            vc.cast = self.cast
             guard let movieImagePath = self.movies[indexPath.row].poster_path else {
                 print("Unable to unwrap imagepath")
                 return

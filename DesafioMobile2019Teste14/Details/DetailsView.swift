@@ -11,6 +11,7 @@ import UIKit
 class DetailsView: UIViewController{
     
     private let detailsViewModel = DetailsViewModel()
+    var cast:[Cast] = []
     var movieId: Int?
     let cell = "Cell"
     var movieDetails: MovieDetails?
@@ -125,7 +126,7 @@ class DetailsView: UIViewController{
         view.addSubview(scrollView)
         setupContraints()
         super.viewDidLoad()
-        
+        print("teste",cast)
         
     }
     

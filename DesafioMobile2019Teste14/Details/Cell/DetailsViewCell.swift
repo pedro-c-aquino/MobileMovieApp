@@ -42,6 +42,7 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
         setupConstraints()
     }
     
+    
     func setupView() {
         
         contentView.backgroundColor = .orange

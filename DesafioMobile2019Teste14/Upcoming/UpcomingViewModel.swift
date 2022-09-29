@@ -13,6 +13,8 @@ protocol MovieDataProtocol {
     func getMovieDetails(_ movieDetails: MovieDetails?)
     
     func changeToDetailView(movieId: Int, indexPath: IndexPath)
+    
+    func getCredits(_ cast:[Cast])
 }
 
 class UpcomingViewModel {
@@ -60,7 +62,22 @@ class UpcomingViewModel {
         networkManager.getMovieDetails(movieId: movieId) { (movieDetails: MovieDetails?) in
             
             self.delegate?.getMovieDetails(movieDetails)
+            self.getCredits(movieId: movieId, indexPath: indexPath)
+            
+        }
+    }
+    func getCredits(movieId: Int, indexPath: IndexPath) {
+        networkManager.getCredits(movieId: movieId) { (moviesCredits: MoviesCredits?) in
+            
+            guard let cast = moviesCredits?.cast else{
+                print("Unable to unwrap cast")
+                return }
+            
+            
+            self.delegate?.getCredits(cast)
             self.delegate?.changeToDetailView(movieId: movieId, indexPath: indexPath)
         }
     }
+
+
 }

@@ -27,10 +27,10 @@ class NetworkManager {
             
             do {
                 let result = try JSONDecoder().decode(T.self, from: data)
-                  completionHandler(result)
+                completionHandler(result)
             } catch {
                 print(error.localizedDescription)
-
+                
             }
         }
         task.resume()
@@ -52,10 +52,34 @@ class NetworkManager {
             
             do {
                 let result = try JSONDecoder().decode(T.self, from: data)
-                  completionHandler(result)
+                completionHandler(result)
             } catch {
                 print(error.localizedDescription)
-
+                
+            }
+        }
+        task.resume()
+    }
+    func getCredits<T: Codable> (movieId: Int, completionHandler: @escaping (T) -> Void) {
+        
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)/credits?api_key=\(apiKey)&language=pt-BR") else { return }
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(T.self, from: data)
+                completionHandler(result)
+            } catch {
+                print(error.localizedDescription)
+                
             }
         }
         task.resume()
