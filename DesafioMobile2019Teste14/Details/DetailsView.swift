@@ -139,7 +139,7 @@ class DetailsView: UIViewController{
             titleLabel.leadingAnchor.constraint(equalTo: viewInScroll.leadingAnchor,constant: 20),
             titleLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor,constant: 20),
             
-            dateLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 70),
+            dateLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 60),
             dateLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor, constant: 20),
             
             filmInfoLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
