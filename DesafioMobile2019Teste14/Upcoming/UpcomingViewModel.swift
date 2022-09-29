@@ -9,6 +9,10 @@ import Foundation
 
 protocol MovieDataProtocol {
     func getMovieData(_ movies: [Result])
+    
+    func getMovieDetails(_ movieDetails: MovieDetails?)
+    
+    func changeToDetailView(movieId: Int, indexPath: IndexPath)
 }
 
 class UpcomingViewModel {
@@ -50,5 +54,13 @@ class UpcomingViewModel {
         
         return "\(day)/\(month)/\(year)"
         
+    }
+    
+    func getDetails(movieId: Int, indexPath: IndexPath) {
+        networkManager.getMovieDetails(movieId: movieId) { (movieDetails: MovieDetails?) in
+            
+            self.delegate?.getMovieDetails(movieDetails)
+            self.delegate?.changeToDetailView(movieId: movieId, indexPath: indexPath)
+        }
     }
 }

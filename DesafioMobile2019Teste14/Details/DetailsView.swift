@@ -9,8 +9,11 @@
 import UIKit
 
 class DetailsView: UIViewController{
+    
+    private let detailsViewModel = DetailsViewModel()
     var movieId: Int?
     let cell = "Cell"
+    var movieDetails: MovieDetails?
     
     private let scrollView : UIScrollView = {
         let scroll = UIScrollView()
@@ -29,7 +32,7 @@ class DetailsView: UIViewController{
     
     lazy var filmInfoLabel : UILabel = {
         let filmInfoLabel = UILabel()
-        filmInfoLabel.text = "TEST"
+        filmInfoLabel.text = "\(movieDetails?.runtime ?? 0)m | "
         filmInfoLabel.textColor = .gray
         filmInfoLabel.numberOfLines = 0
         filmInfoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +42,7 @@ class DetailsView: UIViewController{
     
     lazy var genreLabel : UILabel = {
         let genreLabel = UILabel()
-        genreLabel.text = "TEST3"
+        genreLabel.text = detailsViewModel.getGenresString(genresArray: movieDetails?.genres)
         genreLabel.textColor = .gray
         genreLabel.numberOfLines = 0
         genreLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +75,7 @@ class DetailsView: UIViewController{
     
     lazy var dateLabel: UILabel = {
         let dateLabel = UILabel(frame: .zero)
-        dateLabel.text = "TEST2"
+        dateLabel.text = detailsViewModel.getYearString(dateString: movieDetails?.release_date)
         dateLabel.numberOfLines = 0
         dateLabel.textColor = .gray
         dateLabel.translatesAutoresizingMaskIntoConstraints = false

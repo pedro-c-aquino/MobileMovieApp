@@ -14,6 +14,8 @@ class UpcomingView: UIViewController {
     
     private var movies: [Result] = []
     
+    private var movieDetail: MovieDetails?
+    
     private lazy var segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Em Breve", "Populares"])
         control.backgroundColor = UIColor.black
@@ -147,24 +149,14 @@ extension UpcomingView: UICollectionViewDelegateFlowLayout, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       let vc = DetailsView()
-        vc.movieId = movies[indexPath.row].id
-        vc.titleLabel.text = movies[indexPath.row].title
-        vc.descriptionFilm.text = movies[indexPath.row].overview
         
-        guard let movieImagePath = movies[indexPath.row].poster_path else {
-            print("Unable to unwrap imagepath")
+        guard let movieId = movies[indexPath.row].id else {
+            print("Unable to unwrap id")
             return
         }
-        
-        let imageBaseString = "https://image.tmdb.org/t/p/original"
-        
-        let url = URL(string: imageBaseString + movieImagePath)
-        
-        vc.detailImage.sd_setImage(with:url)
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
        
+        upcomingViewModel.getDetails(movieId: movieId, indexPath: indexPath)
+        
     }
         
 }
@@ -174,6 +166,35 @@ extension UpcomingView: MovieDataProtocol {
         self.movies = movies
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+        }
+       
+    }
+    
+    func getMovieDetails(_ movieDetails: MovieDetails?) {
+        self.movieDetail = movieDetails
+    }
+    
+    func changeToDetailView(movieId: Int, indexPath: IndexPath) {
+        
+        DispatchQueue.main.async {
+            let vc = DetailsView()
+            vc.movieDetails = self.movieDetail
+            vc.movieId = movieId
+            vc.titleLabel.text = self.movies[indexPath.row].title
+            vc.descriptionFilm.text = self.movies[indexPath.row].overview
+            
+            guard let movieImagePath = self.movies[indexPath.row].poster_path else {
+                print("Unable to unwrap imagepath")
+                return
+            }
+            
+            let imageBaseString = "https://image.tmdb.org/t/p/original"
+            
+            let url = URL(string: imageBaseString + movieImagePath)
+            
+            vc.detailImage.sd_setImage(with:url)
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         }
        
     }
