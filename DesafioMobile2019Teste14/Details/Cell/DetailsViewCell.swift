@@ -12,7 +12,7 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     
     let movieImage: UIImageView = {
         let movieImage = UIImageView()
-        movieImage.backgroundColor = .cyan
+        movieImage.backgroundColor = #colorLiteral(red: 0.1215686426, green: 0.1215686426, blue: 0.1215686426, alpha: 1)
         
         return movieImage
     }()
@@ -47,7 +47,7 @@ class DetailsViewCell: UICollectionViewCell, SetupView {
     
     func setupView() {
         
-        contentView.backgroundColor = .orange
+        contentView.backgroundColor = #colorLiteral(red: 0.1215686426, green: 0.1215686426, blue: 0.1215686426, alpha: 1)
         
     }
     
